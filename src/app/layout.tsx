@@ -1,7 +1,5 @@
+import { HeaderComponent } from '@/components'
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,11 +9,23 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="es">
+      <body className="bg-white md:bg-gray-200">
+        <main className="container px-10 md:px-48 lg:px-72 h-full">
+          <div
+            className="px-2 md:px-48 lg:px-52 bg-white"
+            style={{ minHeight: '100vh' }}
+          >
+            <HeaderComponent />
+            {children}
+            {/* <FooterComponent /> */}
+          </div>
+        </main>
+      </body>
     </html>
   )
 }
