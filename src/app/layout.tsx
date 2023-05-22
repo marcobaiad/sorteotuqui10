@@ -23,6 +23,7 @@ export default function RootLayout({
             <HeaderComponent />
             {children}
             {/* <FooterComponent /> */}
+            <div className="py-10" />
           </div>
         </main>
       </body>

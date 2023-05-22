@@ -17,7 +17,7 @@ export default async function Home() {
       <p>
         Podes consultar{' '}
         <span>
-          <Link href={`/mes/${month}`} className="text-green-700">
+          <Link href={`/mes/${month}`} className="text-green-700 font-bold">
             acá
           </Link>
         </span>{' '}
