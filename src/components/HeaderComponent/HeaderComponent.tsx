@@ -11,7 +11,7 @@ function HeaderComponent() {
       <Link className="mt-5 md:my-0 text-green-800 font-extrabold" href="/">
         Sorteo Tuqui 10
       </Link>
-      <div className="ml-auto">
+      <div className="ml-0 md:ml-auto">
         <ul className="flex gap-x-2 py-5 w-min ml-auto">
           {[
             formatMonth(
