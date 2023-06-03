@@ -1,9 +1,5 @@
 import Link from 'next/link'
 import HeaderLinks from './HeaderLinks'
-const currentDate = new Date()
-const currentMonth = currentDate.getMonth()
-const formatMonth = (month: Date) =>
-  new Intl.DateTimeFormat('es-AR', { month: 'long' }).format(month)
 
 function HeaderComponent() {
   return (
@@ -13,15 +9,10 @@ function HeaderComponent() {
       </Link>
       <div className="ml-0 md:ml-auto">
         <ul className="flex gap-x-2 py-5 w-min ml-auto">
-          {[
-            formatMonth(
-              new Date(new Date().setMonth(Number(currentMonth - 1)))
-            ),
-            formatMonth(currentDate),
-          ].map((month) => (
-            <HeaderLinks key={month} href={`/mes/${month}`} label={month} />
-          ))}
-          <HeaderLinks href="/mes" label="Ver todos" />
+          <HeaderLinks />
+          <li className="capitalize whitespace-nowrap rounded-md py-1 px-2 shadow">
+            <Link href="/mes">Ver Todos</Link>
+          </li>
         </ul>
       </div>
     </nav>

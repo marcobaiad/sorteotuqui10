@@ -18,7 +18,7 @@ function SelectInput({ defaultValue }: { defaultValue: string }) {
       <select
         name="months"
         id="months"
-        className="capitalize focus:outline-none border ml-2 w-32"
+        className="capitalize focus:outline-none border rounded pl-2 ml-2 w-32"
         onChange={(e) => router.push(`/mes/${e.target.value}`)}
         defaultValue={defaultValue}
       >

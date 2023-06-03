@@ -5,3 +5,9 @@ export interface TuquiImage {
   date: string
   time: number
 }
+
+export interface AlertColors {
+  text: string
+  border: string
+  bg: string
+}

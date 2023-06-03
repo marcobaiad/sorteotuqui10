@@ -2,6 +2,8 @@ import { Tuqui10Element, SelectInput } from '@/components'
 import { formatedMonth } from '@/utils/nameMonthToDateFormat'
 import { getSundays } from '@/utils/getSundaysByMonth'
 import { capitalizeWord } from '@/utils/capitalizeLetter'
+import AlertComponent from '@/components/AlertComponent/AlertComponent'
+import { allMonths } from '@/utils/monthsAvailables'
 
 interface Props {
   params: { month: string }
@@ -16,7 +18,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 const SingleMonthPage = ({ params }: Props) => {
-  const lotteryDays = getSundays(params.month)
+  const { month } = params
+  const lotteryDays = getSundays(month)
   const isLastLotteryDay = lotteryDays
     .map(({ isMajor }) => isMajor.toString())
     .lastIndexOf('false')
@@ -28,14 +31,13 @@ const SingleMonthPage = ({ params }: Props) => {
           <h1 className="text-lg md:text-2xl font-bold my-3 whitespace-nowrap text-green-800 text-center">
             Sorteo Tuqui 10 mes
             <span className="capitalize ml-1">
-              {capitalizeWord(formatedMonth(params.month))}
+              {capitalizeWord(formatedMonth(month))}
             </span>
           </h1>
           <p>
             Enterate quienes fueron los ganadores del{' '}
             <b>
-              sorteo del Tuqui 10 de{' '}
-              {capitalizeWord(formatedMonth(params.month))} 2023
+              sorteo del Tuqui 10 de {capitalizeWord(formatedMonth(month))} 2023
             </b>
             . Controlá los resultados con tu cartón y enterate si fuiste ganador
             de algún premio.
@@ -43,20 +45,26 @@ const SingleMonthPage = ({ params }: Props) => {
           <section>
             <h3 className="my-4 font-bold text-lg">Usá nuestro buscador</h3>
             <p>
-              Con nustro buscador podrás controlar los resultados de los meses
+              Con nuestro buscador podrás controlar los resultados de los meses
               anteriores.
             </p>
-            <SelectInput defaultValue={params.month} />
+            <SelectInput defaultValue={month} />
+            {new Date(lotteryDays[0].date) < new Date() && (
+              <div className="flex justify-center my-10">
+                <AlertComponent
+                  lastMonth={allMonths[allMonths.indexOf(month) - 1]}
+                  type="warning"
+                />
+              </div>
+            )}
           </section>
           <section className="flex flex-wrap justify-center">
             {lotteryDays.map((tuqui, index) => {
-              const { isMajor, isToday, date } = tuqui
-
+              const { date } = tuqui
               return (
                 <Tuqui10Element
                   key={`${date}-${index}`}
                   {...tuqui}
-                  showError={!isMajor && !isToday}
                   isLastLotteryDay={isLastLotteryDay === index}
                 />
               )
