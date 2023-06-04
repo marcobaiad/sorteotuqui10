@@ -1,4 +1,5 @@
 export { default as Tuqui10Element } from './Tuqui10Element'
 export { default as FooterComponent } from './FooterComponent'
 export { default as HeaderComponent } from './HeaderComponent'
+export { default as OneSignalScript } from './OneSignal'
 export { SelectInput } from './SelectInput'

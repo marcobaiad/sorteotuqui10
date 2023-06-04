@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import { OneSignalScript } from '@/components'
 const currentDate = new Date()
 const currentMonth = currentDate.getMonth()
 const formatMonth = (month: Date) =>
@@ -8,7 +10,9 @@ const formatMonth = (month: Date) =>
 
 function HeaderLinks() {
   const path = usePathname()
-
+  useEffect(() => {
+    OneSignalScript()
+  })
   return (
     <>
       {[

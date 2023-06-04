@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-white md:bg-gray-200">
-        <main className="container px-10 md:px-48 lg:px-72 h-full">
+        <main className="container px-6 md:px-48 lg:px-72 h-full">
           <div
             className="px-2 md:px-48 lg:px-52 bg-white"
             style={{ minHeight: '100vh' }}
