@@ -24,6 +24,10 @@ const SingleMonthPage = ({ params }: Props) => {
     .map(({ isMajor }) => isMajor.toString())
     .lastIndexOf('false')
 
+  const { date, isToday } = lotteryDays[0]
+  const hasRaffle = new Date(date.split('-').reverse().join(' ')) > new Date()
+  const isTime = new Date().getHours() > 20 && new Date().getMinutes() > 35
+
   return (
     <>
       <div className="flex justify-center">
@@ -49,7 +53,7 @@ const SingleMonthPage = ({ params }: Props) => {
               anteriores.
             </p>
             <SelectInput defaultValue={month} />
-            {new Date(lotteryDays[0].date) < new Date() && (
+            {(hasRaffle || (isToday && !isTime)) && (
               <div className="flex justify-center my-10">
                 <AlertComponent
                   lastMonth={allMonths[allMonths.indexOf(month) - 1]}
