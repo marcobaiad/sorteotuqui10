@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-pascal-case */
 import { HeaderComponent } from '@/components'
 import './globals.css'
+import GTM from '@/components/GTM/GTM'
 
 export const metadata = {
   title: 'Sorteo Tuqui 10 Tucumán',
@@ -27,6 +29,7 @@ export default function RootLayout({
             <div className="py-10" />
           </div>
         </main>
+        <GTM />
       </body>
     </html>
   )
